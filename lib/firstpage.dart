@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -21,8 +20,6 @@ class _FirstState extends State<First> {
       allquotesdata = data['quotes'];
     });
   }
-
-
   quotes() async {
     String res = await rootBundle.loadString("assets/love.json");
     setState(() {
@@ -35,7 +32,6 @@ class _FirstState extends State<First> {
     super.initState();
     quotesdata();
   }
-
   @override
   Widget build(BuildContext context) {
 
@@ -47,7 +43,7 @@ class _FirstState extends State<First> {
       quotes();
     }
     else if(i==3){
-      quotesdata();
+
     }else if(i==4){
       quotes();
     }
@@ -66,14 +62,12 @@ class _FirstState extends State<First> {
                 itemCount: allquotesdata.length,
                 itemBuilder: (context, index) {
                   return Card(
-                    elevation: 2,
+                    elevation: 3,
                     shadowColor: Colors.black,
-
                     shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Colors.blue),
+                      side: BorderSide(color: Colors.blue,width: 2),
                       borderRadius: BorderRadius.circular(10),
                     ),
-
                     child: ListTile(
                       leading: Text("$index"),
                       title: Text("${allquotesdata[index]['quote']}"),

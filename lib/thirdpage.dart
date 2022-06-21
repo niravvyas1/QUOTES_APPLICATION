@@ -2,28 +2,28 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class Second extends StatefulWidget {
-  const Second({Key? key}) : super(key: key);
+class Third extends StatefulWidget {
+  const Third ({Key? key}) : super(key: key);
 
   @override
   _FirstState createState() => _FirstState();
 }
 
-class _FirstState extends State<Second> {
-  List allquotesdata= [];
+class _FirstState extends State<Third> {
+  List allquotesdata = [];
 
-    quotes() async {
-      String res = await rootBundle.loadString("assets/love.json");
-      setState(() {
-        allquotesdata= jsonDecode(res);
-      });
+  sad() async {
+    String res = await rootBundle.loadString("assets/sad.json");
+    setState(() {
+      allquotesdata= jsonDecode(res);
+    });
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    quotes();
+    sad();
   }
 
   @override
@@ -32,7 +32,7 @@ class _FirstState extends State<Second> {
       child: Scaffold(
         backgroundColor: Colors.blue.shade50,
         appBar: AppBar(
-          title: Text("LOVE QUOTES"),
+          title: Text("SAD QUOTES"),
           centerTitle: true,
         ),
         body: Padding(
@@ -54,7 +54,7 @@ class _FirstState extends State<Second> {
                     child: ListTile(
                       leading: Text("$index"),
                       title: Text("${allquotesdata[index]['text']}"),
-                      subtitle: Text("${allquotesdata[index]['from']}"),
+                      subtitle: Text("${allquotesdata[index]['author']}"),
                     ),
                   );
                 }),
@@ -63,4 +63,4 @@ class _FirstState extends State<Second> {
       ),
     );
   }
-  }
+}
